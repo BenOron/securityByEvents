@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="Js/js.js"></script>
+    <link rel="stylesheet" href="style/css/style.css"/>
+        <title>Ben Oron Profile</title>
+    </head>
+    <script>
+    
+        var socket = io.connect();
+       socket.on('connect', function () {
+          console.log("connect");
+        });
+
+        socket.on('message', function (msg) {
+          console.log("message");
+        });
+
+        console.log('Sending message:', "text");
+          socket.emit('message', "text");
+          
+          socket.emit('identify', "name");
+        
+      
+    </script>
+
+    <body>
+        <div id="continar" class="continar"> 
+        <br>
+            <div><input type="text"  id="inputText" class="inputContinar" name="FirstName" value="Mickey" > </div>
+    </div> 
+    </body>
+         <script src="https://benoron-benoron.c9.io/socket.io/socket.io.js"></script>
+
+</html>

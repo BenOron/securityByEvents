@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="media/js_libs/jquery-1.12.0.min.js"></script>
+    <link href="media/css_libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="media/js/tester.js"></script>
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="media/css/style.css"/>
+    <script type="text/javascript" src="media/js_libs/d3/d3.js"></script>
+    <script type="text/javascript" src="media/js_libs/d3/d3.geom.js"></script>
+    <script type="text/javascript" src="media/js_libs/d3/d3.layout.js"></script>
+    <script type="text/javascript" src="media/js_libs/CodeFlower.js"></script>
+    <script type="text/javascript" src="media/js_libs/dataConverter.js"></script>
+    <script>
+        var currentCodeFlower;
+        var createCodeFlower = function (json) {
+            // update the jsonData textarea
+//        document.getElementById('jsonData').value = JSON.stringify(json);
+            // remove previous flower to save memory
+            if (currentCodeFlower) {
+                currentCodeFlower.cleanup();
+            }
+            // adapt layout size to the total number of elements
+//            var total = countElements(json);
+//            w = parseInt(Math.sqrt(total) * 30, 10);
+//            h = parseInt(Math.sqrt(total) * 30, 10);
+
+            var w = 505;
+            var h = 505;
+
+            // create a new CodeFlower
+            currentCodeFlower = new CodeFlower(".visualization", w, h).update(json);
+        };
+
+
+        var numOfBars = 0;
+        function run_pb($element, from, to, stepInMs) {
+            numOfBars++;
+            var total = to;
+            var current = from;
+            var intervalRef = setInterval(function () {
+                current += 5;
+                //console.log('current = ' + current + ' total = ' + total);
+                if (current > total) {
+                    numOfBars--;
+                    if (numOfBars == 0) {
+                        showResult();
+                    }
+                    //remove the hidden class of the given element
+                    $element.find('.gradeContainer').removeClass('hidden');
+                    clearInterval(intervalRef);
+
+                    return; // stay on the safe side...
+                }
+                $element
+                    //change the progress bar size
+                        .find('.progress-bar').width(current + '%')
+                    //change progress bar text
+                        .find('span.pb-number').text(current);
+            }, stepInMs /*ms*/);
+        }
+
+        function showResult() {
+            var resultClass = 'alert-danger';
+            var resultText = '14% Profile Match !!!';
+
+            $('#result').addClass(resultClass).text(resultText).removeClass('hidden');
+            $('#result').addClass("tab blink").text(resultText);
+//            succeed_icon
+            setTimeout(function () {
+                $('#result').addClass(resultClass).text(resultText).removeClass('tab blink');
+                $("#result-success-icon").addClass('icon_show');//.fadeIn();
+
+
+                //d3.json('data2.json', createCodeFlower);
+
+                //d3.json('jquery.json', createCodeFlower);
+            }, 3000);
+        }
+
+        $(document).ready(function () {
+            run_pb($('#pb1'), 0, 100, 250);
+            run_pb($('#pb2'), 0, 100, 211);
+            run_pb($('#pb3'), 0, 100, 166);
+            run_pb($('#pb4'), 0, 100, 275);
+            run_pb($('#pb5'), 0, 100, 194);
+            run_pb($('#pb6'), 0, 100, 220);
+            run_pb($('#pb7'), 0, 100, 290);
+            run_pb($('#pb8'), 0, 100, 242);
+            run_pb($('#pb9'), 0, 100, 188);
+            run_pb($('#pb10'), 0, 100, 327);
+        });
+
+    </script>
+</head>
+<body>
+<h1 class="title">SaPower Administrator</h1>
+<div class="row">
+    <div class="leftPart">
+        <div class="row rowSize" id="pb1">
+            <div class="col-sm-4">
+                <label>Events Acquisition:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">16</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb2">
+            <div class="col-sm-4">
+                <label>Keystroke Flight Analysis:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">11</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb3">
+            <div class="col-sm-4">
+                <label>Keystroke Dwelling Analysis:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-warning hidden gradeContainer">
+                <span id="grade">42</span>
+                <span class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb4">
+            <div class="col-sm-4">
+                <label>Mouse Dynamics:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">19</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb5">
+            <div class="col-sm-4">
+                <label>Linear Classifiers:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">7</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb6">
+            <div class="col-sm-4">
+                <label>Mouse movement angle:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-warning hidden gradeContainer">
+                <span id="grade">41</span>
+                <span class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb7">
+            <div class="col-sm-4">
+                <label>Scrolling Time Stamp:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">3</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb8">
+            <div class="col-sm-4">
+                <label>Analysis of variance:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">12</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb9">
+            <div class="col-sm-4">
+                <label>Simmilarity Match:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">2</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+
+        <div class="row rowSize" id="pb10">
+            <div class="col-sm-4">
+                <label>Signatures Data Base:</label>
+            </div>
+            <div class="col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="pb-number">0</span>% Complete
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            <span class="text-danger hidden gradeContainer">
+                <span id="grade">8</span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+            </div>
+        </div>
+    </div>
+    <div class="rightPart">
+        <img class="pic_location" src="media/resources/yulia.jpg" alt="Mountain View">
+        <div class="visualization"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <div class="alert hidden" id="result"></div>
+        <div class="glyphicon glyphicon glyphicon-remove succeed_icon" id="result-success-icon"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    d3.json('data2.json', createCodeFlower);
+</script>
+</body>
+</html>
