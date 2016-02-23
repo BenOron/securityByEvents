@@ -146,9 +146,9 @@ function loadIframe1() {
   //Attributes of <input>
   modal: true,
   size: 'large',
-closeButton: false,
-   closeOnEsc: false,
-   label: 'What is the name of your first pet?',
+  closeButton: false,
+  closeOnEsc: false,
+  label: 'What is the name of your first pet?',
   attrs: {
    placeholder: "Answer",
   },
@@ -188,66 +188,6 @@ function capitalise(string) {
  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-/*function closeModel(e) {
- $("#basicModal").remove();
-}*/
-
-/*function onOk(e) {
- var dogname = "star";
- if ($("#questionsmodal").val().toLowerCase() === dogname) {
-  closeModel();
-  identifiedSuccess();
- }
- else {
-  identifiedFailed();
-  closeModel();
-  loadIframe2();
- }
-
-}
-*/
-/*function identifiedSuccess() {
- Command: toastr["success"]("Authentication Succeeded !!!, Thanks. ")
- toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-full-width",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
- }
-}
-*/
-/*function identifiedFailed() {
- Command: toastr["error"]("Authentication Failed!!!, Please Try again.")
- toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-full-width",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
- }
-}
-*/
 
 function getFailedText() {
  return "Authentication Failed!!!, Please Try again."
@@ -265,42 +205,23 @@ function videoPopupAutRequest() {
   });
 }
 
-
-function loadIframe2() {
- /*function addStyleString(str) {
-  var node = document.createElement('style');
-  node.innerHTML = str;
-  document.body.appendChild(node);
- }
-
- addStyleString('.modal .modal-content,  .modal .modal-footer{ padding: 0.3% !important };');
- addStyleString('.modal .modal-footer {background:rgba(173, 216, 230, 0.24)}');
- addStyleString('.modal-header {padding: 0;}');
- addStyleString('.modal {padding: 0;}');
- addStyleString('.alert {padding: 7px;}');
- addStyleString('.form-inline {margin: 10px;}');
-
- var title = 'Security Alert !!!!';
- var body = '<h6>Your authentication failed.</h6><h6>You now need to be authenticated by face recognition.</h6><button type="button" class="btn  center-block btn-warning glyphicon glyphicon-facetime-video" onclick="videoBtn()">Warning</button>'
- d3e2 = '<div class="modal fade" id="basicModal1" style="opacity:1; display: block; max-width: 100%; background-color: rgba(0, 0, 0, 0.73)"   tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"> <div class="modal-dialog" style="margin-top: 15%;"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close disabled" data-dismiss="modal" aria-hidden="true"></button> <h4 class="modal-title alert alert-danger" id="myModalLabe2">' + title + '</h4> </div>' + body + '<div class="modal-footer" ><button type="button" onclick="onOk1(this)" class="btn btn-primary">Ok</button> </div></div></div></div>';
- $("body").append(d3e2);*/
- var faceRecognition = Lobibox.alert("error", //AVAILABLE TYPES: "error", "info", "success", "warning"
-  {
-   size: 'large',
-   closeButton: false,
-   closeOnEsc: false,
-   title: "Security Alert !!!!",
-   msg: "Your authentication failed.You now need to be authenticated by face recognition.",
-   buttons: {
-    custom: {
-     'class': 'btn btn-warning',
-     text: 'Start recognition'
-    }
-   },
-   callback: function(lobibox, type) {
-    loadFaceRec();
+var faceRecognition = Lobibox.alert("error", //AVAILABLE TYPES: "error", "info", "success", "warning"
+ {
+  size: 'large',
+  closeButton: false,
+  closeOnEsc: false,
+  title: "Security Alert !!!!",
+  msg: "Your authentication failed.You now need to be authenticated by face recognition.",
+  buttons: {
+   custom: {
+    'class': 'btn btn-warning',
+    text: 'Start recognition'
    }
-  });
+  },
+  callback: function(lobibox, type) {
+   loadFaceRec();
+  }
+ });
 }
 
 
@@ -358,15 +279,15 @@ function loadFaceRec() {
  else {
   url = "https://preview.c9users.io/benoron/securitybyevents/face/lib/BRF_NXT_JS_EXAMPLES/bin/index.html?allowAccess=" + window.allowAccess;
   setTimeout(function() {
-    failedAlert();
+   failedAlert();
   }, 13000);
- 
+
  }
 
  function successAlert() {
   Lobibox.notify("success", {
-    position:"top right",
-  // size: 'large',
+   position: "top right",
+   // size: 'large',
    //delay: 1000,
    msg: getSuccessText()
   });
@@ -374,31 +295,12 @@ function loadFaceRec() {
 
  function failedAlert() {
   Lobibox.notify("error", {
-   position:"top right",
-  // size: 'large',
-    //  delay: 1000,
+   position: "top right",
+   // size: 'large',
+   //  delay: 1000,
    msg: getFailedText()
   });
  }
 
-
-
-
-
  PopupCenter(url, "640", "480");
 }
-
-
-
-function closeModel1(e) {
- $("#basicModal1").remove();
-}
-
-
-function onOk1(e) {
-
-}
-
-
-
-//'<label for="questionsmodal" class="control-label">What is the name of your first pat? </label> <input type="text" class="form-control input-5" id="questionsmodal"> ';
