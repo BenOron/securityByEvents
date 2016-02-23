@@ -20,6 +20,14 @@ function initExample() {
 	_stage.addChild(new nxtjs.ExampleCandideTracking());
 }
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
 
 
 (function(lib) {
@@ -124,9 +132,16 @@ function initExample() {
 			else if (state == lib.BRFState.FACE_TRACKING) {
 				// FACE_TRACKING does update the candide properties.
 				lib.DrawingUtils.drawTriangles(_this._draw, faceShape.candideShapeVertices, faceShape.candideShapeTriangles);
+				var allowAccess = getUrlVars()["allowAccess"];
+				if(allowAccess === "false"){
+					document.getElementById("backgroundDiv").style.display = "block";		
+				}else{
+					document.getElementById("backgroundDivS").style.display = "block";	
+				}
+				
 				setTimeout(function() {
 					window.close();
-				}, 7000);
+				}, 5000);
 
 
 				//lib.DrawingUtils.drawTrianglesAsPoints(_this._draw, faceShape.candideShapeVertices);
