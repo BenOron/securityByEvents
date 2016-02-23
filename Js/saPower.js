@@ -82,8 +82,6 @@ function firstload() {
    $(".navbar-fixed-bottom").append($container);
    $(".sapPowerContainer").append(p, BtnShow);
   }
-
-
   firsload = false;
  }
 };
@@ -222,7 +220,6 @@ var faceRecognition = Lobibox.alert("error", //AVAILABLE TYPES: "error", "info",
    loadFaceRec();
   }
  });
-}
 
 
 
@@ -287,8 +284,6 @@ function loadFaceRec() {
  function successAlert() {
   Lobibox.notify("success", {
    position: "top right",
-   // size: 'large',
-   //delay: 1000,
    msg: getSuccessText()
   });
  }
@@ -296,8 +291,6 @@ function loadFaceRec() {
  function failedAlert() {
   Lobibox.notify("error", {
    position: "top right",
-   // size: 'large',
-   //  delay: 1000,
    msg: getFailedText()
   });
  }
