@@ -12,7 +12,7 @@ if (createjs == null) {
  * Called onload of body.
  */
 function initExample() {
-	
+
 	// Setup CreateJS: uses the canvas with id '_stage'.
 	// See ExampleBase.js
 
@@ -21,13 +21,13 @@ function initExample() {
 }
 
 function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
-    function(m,key,value) {
-      vars[key] = value;
-    });
-    return vars;
-  }
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+		function(m, key, value) {
+			vars[key] = value;
+		});
+	return vars;
+}
 
 
 (function(lib) {
@@ -133,16 +133,21 @@ function getUrlVars() {
 				// FACE_TRACKING does update the candide properties.
 				lib.DrawingUtils.drawTriangles(_this._draw, faceShape.candideShapeVertices, faceShape.candideShapeTriangles);
 				var allowAccess = getUrlVars()["allowAccess"];
-				if(allowAccess === "false"){
-					document.getElementById("backgroundDiv").style.display = "block";		
-				}else{
-					document.getElementById("backgroundDivS").style.display = "block";	
+				if (allowAccess === "false") {
+					setTimeout(function() {
+						document.getElementById("backgroundDiv").style.display = "block";
+					}, 3000);
 				}
-				
+				else {
+					setTimeout(function() {
+						document.getElementById("backgroundDivS").style.display = "block";
+					}, 3000);
+
+				}
+
 				setTimeout(function() {
 					window.close();
-				}, 5000);
-
+				},5000);
 
 				//lib.DrawingUtils.drawTrianglesAsPoints(_this._draw, faceShape.candideShapeVertices);
 			}

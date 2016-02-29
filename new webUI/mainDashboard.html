@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css.min.css" type="text/css" />
+    <link rel="stylesheet" href="site.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SAPower</title>
+</head>
+<script>
+      var site;
+      function getUrlVars() {
+   var vars = {};
+   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(m, key, value) {
+     vars[key] = value;
+    });
+   return vars;
+  }
+
+
+  function getStatusAndUpdate() {
+   var allowAccess = getUrlVars()["allowAccess"];
+   return allowAccess === "false";
+  }
+
+  function checkStatus() {
+      
+      if(getStatusAndUpdate()){
+           site = 'index.html?allowAccess=false';
+           document.getElementById('iframeRes').src = site;   
+      };
+  }
+    function urlChange(url) {
+        if(document.getElementById('iframeRes').src === "https://preview.c9users.io/benoron/securitybyevents/new%20webUI/index.html"){
+             site = 'index.html?allowAccess=false';
+           
+        }else{
+             site = 'index.html';
+        }
+        
+          document.getElementById('iframeRes').src = site;   
+    }
+</script>>
+
+<body onload="checkStatus()">
+    <div>
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+    </div>
+    <div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <p class="navbar-right">
+                <button type="button" class=" user_btn btn btn-default navbar-btn">Administrator</button>
+            </p>
+            <div class="collapse navbar-collapse navbar-menubuilder">
+                <a class="logo_icon navbar-brand" href="#">
+                    <img src="SAPower.png" width=70px alt="">
+                </a>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#">Alerts</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#" onClick="urlChange('index.html')">Profile</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9" style="margin-left: 10%">
+        <iframe id="iframeRes" class="embed-responsive-item" src="index.html" style="height: 85%;"></iframe>
+    </div>
+
+
+
+</body>
+
+</html>
