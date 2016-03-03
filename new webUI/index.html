@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -13,30 +13,9 @@
     <script src="//kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script>
     <script type="text/javascript" src="js.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <script type="text/javascript" src="js_libs/CodeFlower.js"></script>
-    <script type="text/javascript" src="js_libs/d3/d3.js"></script>
-    <script type="text/javascript" src="js_libs/d3/d3.geom.js"></script>
-    <script type="text/javascript" src="js_libs/d3/d3.layout.js"></script>
+    
     <link type="text/css" rel="stylesheet" href="js_libs/style.css" />
-    <script>
-        var currentCodeFlower;
-        var w = 405;
-        var h = 405;
-        var createCodeFlower = function(json) {
-            if (currentCodeFlower) {
-                currentCodeFlower.cleanup();
-            }
-            if ($(window).width() < 1025) {
-                w = 300;
-                h = 300;
-            }
-
-
-            // create a new CodeFlower
-            currentCodeFlower = new CodeFlower(".visualization", w, h).update(json);
-        };
-        d3.json('data2.json', createCodeFlower);
-    </script>
+    
 </head>
 
 <body>
@@ -49,7 +28,6 @@
     </div>
   </div>
 </nav>-->
-    <br></br>
     <div class="navbar nav navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="collapse navbar-collapse">
@@ -62,7 +40,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img alt="Brand" src="js_libs/yulia.jpg" width="55px" style=" border-radius: 22px;" >
+                            <img alt="Brand" src="js_libs/yulia.jpg" width="55px" style=" border-radius: 22px;">
                             <strong style="color: #565a66">Yulia</strong>
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </a>
@@ -103,109 +81,110 @@
     </div>
     <div class="container">
         <div class="row firstrow">
-            <div class="col-1 col-1" style="">
-                <br></br>
+          <!--  <div class="col-xs-1 col-sm-1"></div>-->
+            <div class="col-md-12 col-sm-12" style="">
                 <div class="row">
-                    <div class="colText col-2" style="">Events Acquisition and Transformation:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Events Acquisition and Transformation:
                     </div>
-                    <div class=" col-2" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb1" class="progress">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-valuetransitiongoal="" style="width: 0%"><span class="pb-number">0</span> Complete </div>
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-valuetransitiongoal="" style="width: 0%">
+                                <span class="pb-number">0</span> Complete
+                            </div>
                         </div>
                     </div>
-                    <div class="colText colIcon col-xs-2 col-md-2" style="">
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style="">
                         <span class="text-success hidden gradeContainer">
-                      <span id="grade_pb1"></span>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                       <span class="text-success hidden gradeContainer">
+                     <span id="grade_pb1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </span>
                     </div>
                     <!--// -->
-
                 </div>
+
                 <div class="row">
-                    <div class="colText col-sm-5" style="">Keystroke Dynamics Classifier:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Keystroke Dynamics Classifier:
                     </div>
-                    <div class="col-xs-7 col-md-5" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb2" class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="pb-number">0</span> Complete </div>
                         </div>
                     </div>
-                    <div class="colText colIcon col-xs-2 col-md-2" style=""><span class="text-success hidden gradeContainer">
-                <span id="grade_pb2"></span>
-                        <span class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style="">
+                        <span class="text-success hidden gradeContainer">
+                            <span id="grade_pb2" class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
                         </span>
                     </div>
-                    <!--// -->
-
                 </div>
+
                 <div class="row">
-                    <div class="colText col-sm-5" style="">Mouse Dynamics Classifier:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Mouse Dynamics Classifier:
                     </div>
-                    <div class="colPro col-xs-7 col-md-5" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb3" class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="pb-number">0</span> Complete </div>
                         </div>
                     </div>
-                    <div class="colIcon colText col-xs-2 col-md-2" style=""><span class="text-success hidden gradeContainer">
-                <span id="grade_pb3"></span>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style=""><span class="text-success hidden gradeContainer">
+                    <span class="text-success hidden gradeContainer">
+                          <span id="grade_pb3" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </span>
                     </div>
-                    <!--// -->
-
                 </div>
 
                 <div class="row">
-                    <div class="colText  col-sm-5" style="">Touch Behavior Classifier:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Touch Behavior Classifier:
                     </div>
-                    <div class="colPro col-xs-7 col-md-5" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb4" class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="pb-number">0</span> Complete </div>
                         </div>
                     </div>
-                    <div class="colText colIcon col-xs-2 col-md-2" style=""><span class="text-success hidden gradeContainer">
-                <span id="grade_pb4"></span>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style="">
+                        <span class="text-success hidden gradeContainer">
+                            <span id="grade_pb4" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </span>
                     </div>
                     <!--// -->
                 </div>
 
                 <div class="row">
-                    <div class="colText col-sm-5" style="">Unique Behavior Detector:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Unique Behavior Detector:
                     </div>
-                    <div class="colPro col-xs-7 col-md-5" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb5" class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="pb-number">0</span> Complete </div>
                         </div>
                     </div>
-                    <div class="colText colIcon  col-xs-2 col-md-2" style=""><span class="text-success hidden gradeContainer">
-                <span id="grade_pb5"></span>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style="">
+                        <span class="text-success hidden gradeContainer">
+                            <span id="grade_pb5" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </span>
                     </div>
                     <!--// -->
                 </div>
                 <div class="row">
-                    <div class="colText col-sm-5" style="">Hybrid Similarity Match:
+                    <div class="colText col-md-3 col-sm-12 col-xs-12" style="">Hybrid Similarity Match:
                     </div>
-                    <div class="col-xs-7 colPro  col-md-5" style="">
+                    <div class="col-md-4 col-sm-10 col-xs-10" style="">
                         <div id="pb6" class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="pb-number">0</span> Complete </div>
                         </div>
                     </div>
-                    <div class="colText colIcon col-xs-2 col-md-2" style=""> <span class="text-success hidden gradeContainer">
-                <span id="grade_pb6"></span>
-                        <span class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
+                    <div class="colText colIcon col-md-1 col-sm-2 col-xs-2" style="">
+                        <span class="text-success hidden gradeContainer">
+                            <span id="grade_pb6" class="glyphicon glyphicon-warning-sign" style="color: yellow" aria-hidden="true"></span>
                         </span>
                     </div>
                     <!--// -->
                 </div>
+              
             </div>
-            <br></br>
-            <div class="graph col-md-3" style="">
+          <!--  <div class="col-xs-4 col-sm-4"></div>-->
+                <!--<div class="col-md-6 col-sm-12" style="">-->
                 <div class="visualization"></div>
-            </div>
+              </div>
+            
         </div>
         <div id="message1" class="alert alert-success alert-dismissable flyover flyover-centered">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -220,17 +199,38 @@
         <!-- <div class="col-md-3">
               <img class="img-responsive" src="http://conversionxl.com/wp-content/uploads/2013/01/heatmap-16-e1399920508585.jpg" alt="Chania" width="700" height="605"> 
         </div>-->
-        <div class="row">
+       <div  class="row downRow" style="background-color: rgba(157, 200, 221, 0.32);">
             <div class="col-xs-6 col-sm-4"></div>
             <div class="col-xs-6 col-sm-4"></div>
             <div class="clearfix visible-xs-block"></div>
-            <div class="col-xs-6 col-sm-4" style=" margin-bottom: 15px; "> 
-            <img class="img-responsive" src="http://cs.ucsb.edu/~mathieu/InsiightDashboard/images/amazonHeatmap.jpg" alt="heatmap" >
+            <div class="col-xs-6 col-sm-4" style="">
+                <img class="img-responsive" src="http://cs.ucsb.edu/~mathieu/InsiightDashboard/images/amazonHeatmap.jpg"  width="70%" alt="heatmap">
             </div>
         </div>
 </body>
+<script type="text/javascript" src="js_libs/CodeFlower.js"></script>
+    <script type="text/javascript" src="js_libs/d3/d3.js"></script>
+    <script type="text/javascript" src="js_libs/d3/d3.geom.js"></script>
+    <script type="text/javascript" src="js_libs/d3/d3.layout.js"></script>
+<script>
+        var currentCodeFlower;
+       /* var w = 900;
+        var h = 900;*/
+        var createCodeFlower = function(json) {
+            if (currentCodeFlower) {
+                currentCodeFlower.cleanup();
+            }
+           
+
+
+            // create a new CodeFlower
+            currentCodeFlower = new CodeFlower(".visualization").update(json);
+        };
+        d3.json('data2.json', createCodeFlower);
+    </script>
 <script type="text/javascript">
     d3.json('data1.json', createCodeFlower);
 </script>
+
 
 </html>

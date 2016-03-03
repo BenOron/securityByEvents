@@ -1,4 +1,6 @@
-var CodeFlower = function(selector, w, h) {
+var w = parseInt($(".firstrow").width() /3);
+var h = parseInt($(".firstrow").height()+200);
+var CodeFlower = function(selector) {
   this.w = w;
   this.h = h;
 
@@ -11,14 +13,18 @@ var CodeFlower = function(selector, w, h) {
   this.svg.append("svg:rect")
     //.style("stroke", "#999")
     .style("fill", "rgba(255, 255, 255, 0.02)")
-  
-    .attr('width', w)
+
+  .attr('width', w)
     .attr('height', h);
 
   this.force = d3.layout.force()
     .on("tick", this.tick.bind(this))
-    .charge(function(d) { return d._children ? -d.size / 100 : -40; })
-    .linkDistance(function(d) { return d.target._children ? 80 : 25; })
+    .charge(function(d) {
+      return d._children ? -d.size / 100 : -40;
+    })
+    .linkDistance(function(d) {
+      return d.target._children ? 80 : 25;
+    })
     .size([h, w]);
 };
 
@@ -45,32 +51,52 @@ CodeFlower.prototype.update = function(json) {
 
   // Update the links
   this.link = this.svg.selectAll("line.link")
-    .data(links, function(d) { return d.target.name; });
+    .data(links, function(d) {
+      return d.target.name;
+    });
 
   // Enter any new links
   this.link.enter().insert("svg:line", ".node")
     .attr("class", "link")
-    .attr("x1", function(d) { return d.source.x; })
-    .attr("y1", function(d) { return d.source.y; })
-    .attr("x2", function(d) { return d.target.x; })
-    .attr("y2", function(d) { return d.target.y; });
+    .attr("x1", function(d) {
+      return d.source.x;
+    })
+    .attr("y1", function(d) {
+      return d.source.y;
+    })
+    .attr("x2", function(d) {
+      return d.target.x;
+    })
+    .attr("y2", function(d) {
+      return d.target.y;
+    });
 
   // Exit any old links.
   this.link.exit().remove();
 
   // Update the nodes
   this.node = this.svg.selectAll("circle.node")
-    .data(nodes, function(d) { return d.name; })
-    .classed("collapsed", function(d) { return d._children ? 1 : 0; });
+    .data(nodes, function(d) {
+      return d.name;
+    })
+    .classed("collapsed", function(d) {
+      return d._children ? 1 : 0;
+    });
 
   this.node.transition()
-    .attr("r", function(d) { return d.children ? 3.5 : Math.pow(d.size, 2/5) || 1; });
+    .attr("r", function(d) {
+      return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
+    });
 
   // Enter any new nodes
   this.node.enter().append('svg:circle')
     .attr("class", "node")
-    .classed('directory', function(d) { return (d._children || d.children) ? 1 : 0; })
-    .attr("r", function(d) { return d.children ? 3.5 : Math.pow(d.size, 2/5) || 1; })
+    .classed('directory', function(d) {
+      return (d._children || d.children) ? 1 : 0;
+    })
+    .attr("r", function(d) {
+      return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
+    })
     .style("fill", function color(d) {
       return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
     })
@@ -92,7 +118,8 @@ CodeFlower.prototype.update = function(json) {
 };
 
 CodeFlower.prototype.flatten = function(root) {
-  var nodes = [], i = 0;
+  var nodes = [],
+    i = 0;
 
   function recurse(node) {
     if (node.children) {
@@ -114,7 +141,8 @@ CodeFlower.prototype.click = function(d) {
   if (d.children) {
     d._children = d.children;
     d.children = null;
-  } else {
+  }
+  else {
     d.children = d._children;
     d._children = null;
   }
@@ -123,7 +151,7 @@ CodeFlower.prototype.click = function(d) {
 
 CodeFlower.prototype.mouseover = function(d) {
   this.text.attr('transform', 'translate(' + d.x + ',' + (d.y - 5 - (d.children ? 3.5 : Math.sqrt(d.size) / 2)) + ')')
-    .text(d.name + ": " + d.size)// + " loc")
+    .text(d.name + ": " + d.size) // + " loc")
     .style('display', null);
 };
 
@@ -134,10 +162,18 @@ CodeFlower.prototype.mouseout = function(d) {
 CodeFlower.prototype.tick = function() {
   var h = this.h;
   var w = this.w;
-  this.link.attr("x1", function(d) { return d.source.x; })
-    .attr("y1", function(d) { return d.source.y; })
-    .attr("x2", function(d) { return d.target.x; })
-    .attr("y2", function(d) { return d.target.y; });
+  this.link.attr("x1", function(d) {
+      return d.source.x;
+    })
+    .attr("y1", function(d) {
+      return d.source.y;
+    })
+    .attr("x2", function(d) {
+      return d.target.x;
+    })
+    .attr("y2", function(d) {
+      return d.target.y;
+    });
 
   this.node.attr("transform", function(d) {
     return "translate(" + Math.max(5, Math.min(w - 5, d.x)) + "," + Math.max(5, Math.min(h - 5, d.y)) + ")";
