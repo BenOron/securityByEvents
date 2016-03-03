@@ -1,0 +1,109 @@
+body{
+    color: white;
+    font-family: helvetica, sans-serif;
+    font-weight: lighter;
+     background:url("background.png") no-repeat center center fixed;
+    background-size: cover;
+    
+}
+.container{
+      margin-top: 20px;
+      width: 100% !important;
+      height: 100% !important;
+    background-color: rgba(157, 200, 221, 0.32);
+}
+
+.downRow{
+   /* width: 100% !important;*/
+    background-color: rgba(157, 200, 221, 0.32);
+    margin-left:0px;    
+    margin-right:0px;
+}
+.nav{
+    position: relative;
+   /* background-color: rgba(139, 175, 206, 0);
+    border: none;*/
+    
+}
+
+.navbar-brand>img {
+
+}
+
+
+
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size{
+    font-size: 87px;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color:#B9D4EC;
+    
+}
+
+.colText {
+      color: #262525;
+    text-align: left;
+        font-size: 23px;
+}
+
+.flyover {
+  margin-top:-1000px;
+   overflow: hidden;
+   position: fixed;
+   width: 50%;
+   opacity: 0.9;
+   z-index: 1050;
+   transition: all 1s ease;
+}
+ 
+.flyover.in {
+  margin-top: 35%;
+      font-size: 35px;
+
+}
+
+@media (max-width:1024px){
+    .flyover.in {
+  margin-top: 47%;
+      font-size: 35px;
+
+}
+}
+
+.colText {
+     color:#565a66;
+    text-align: left;
+    font-weight: bold;
+} 
+
+.colPro{
+    width:42%;
+}
+
+.colIcon{
+    width:14%;
+}
+
+
+.alert-danger {
+    color: #E2CECE !important;
+    background-color: #D61111 !important;
+    border-color: #333031 !important;
+}
+
+.alert-success{
+    background-color: #71DD45 !important;
+}
